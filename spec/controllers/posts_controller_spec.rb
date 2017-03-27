@@ -17,7 +17,6 @@ RSpec.describe PostsController, type: :controller do
     end
   end
 
-
   describe "GET show" do
     it "returns http success" do
       get :show, {id: my_post.id}
@@ -110,6 +109,21 @@ RSpec.describe PostsController, type: :controller do
 
       put :update, id: my_post.id, post: {title: new_title, body: new_body}
       expect(response).to redirect_to my_post 
+    end
+  end
+  
+  describe "DELETE destroy" do
+    it "deletes the post" do
+      delete :destroy, {id: my_post.id}
+      
+      count = Post.where({id: my_post.id}).size
+      expect(count).to eq 0
+    end
+    
+    it "redirects to post index" do
+      delete :destroy, {id: my_post.id}
+      
+      expect(response).to redirect_to post_path
     end
   end
 end
