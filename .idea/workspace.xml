@@ -188,7 +188,11 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="493000" />
+=======
+    <option name="totallyTimeSpent" value="893000" />
+>>>>>>> checkpoint-20-more-crud
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1280" height="1054" extended-state="0" />
