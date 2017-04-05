@@ -95,23 +95,23 @@ RSpec.describe PostsController, type: :controller do
       new_title = RandomData.random_sentence
       new_body = RandomData.random_paragraph
 
-      put :update, id: my_post.id, post: {title: new_title, body: new_body}
-      expect(response).to redirect_to my_post 
+      put :update, topic_id: my_topic.id, id: my_post.id, post: {title: new_title, body: new_body}
+      expect(response).to redirect_to [my_topic, my_post] 
     end
   end
   
   describe "DELETE destroy" do
     it "deletes the post" do
-      delete :destroy, {id: my_post.id}
+      delete :destroy, topic_id: my_topic.id, id: my_post.id
       
       count = Post.where({id: my_post.id}).size
       expect(count).to eq 0
     end
     
-    it "redirects to post index" do
-      delete :destroy, {id: my_post.id}
+    it "redirects to topic show" do
+      delete :destroy, topic_id: my_topic.id, id: my_post.id
       
-      expect(response).to redirect_to posts_path
+      expect(response).to redirect_to my_topic
     end
   end
 end
