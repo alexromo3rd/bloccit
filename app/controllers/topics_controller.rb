@@ -1,6 +1,6 @@
 class TopicsController < ApplicationController
   # #7
-  before_action :require_sign_in, expect: [:index, :show]
+  before_action :require_sign_in, except: [:index, :show]
   # #8
   before_action :authorize_user, except: [:index, :show]
   
