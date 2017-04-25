@@ -2,8 +2,8 @@ class TopicsController < ApplicationController
   # #7
   before_action :require_sign_in, except: [:index, :show]
   # #8
-  before_action :authorize_user, except: [:index, :show]
-  
+  load_and_authorize_resource
+
   def index
     @topics = Topic.all
   end

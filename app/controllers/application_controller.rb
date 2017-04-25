@@ -13,4 +13,9 @@ class ApplicationController < ActionController::Base
       redirect_to new_session_path
     end
   end
+
+  rescue_from CanCan::AccessDenied do |exception|
+    flash[:alert] = "Access denied."
+    redirect_to root_url
+  end
 end
