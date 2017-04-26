@@ -2,6 +2,8 @@ class Post < ActiveRecord::Base
   belongs_to :topic
   belongs_to :user
   has_many :comments, dependent: :destroy
+  # #4
+  has_many :votes, dependent: :destroy
 
   default_scope { order('created_at DESC') }
 
